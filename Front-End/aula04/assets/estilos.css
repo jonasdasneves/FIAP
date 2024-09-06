@@ -1,0 +1,40 @@
+#disc{
+    list-style-type: circle;
+
+
+}
+
+#katana{
+    list-style-type: katakana;
+}
+
+nav{
+    width: 150px;
+    background-color: aqua;
+    border: 1px solid #000;
+}
+
+nav ul{
+    list-style-type:none;
+    padding: 0;
+    margin: 0;
+}
+
+nav ul li{
+    height: 30px;
+    border-bottom: 1px solid #000;
+}
+
+nav ul li a{
+    text-decoration: none;
+    border-left: 5px solid green;
+    padding-left: 15px;
+    display: block;
+    height: 30px;
+    color:red;
+}
+
+nav ul li a:hover{
+    background-color: green;
+    border-left-color: aqua;
+}
