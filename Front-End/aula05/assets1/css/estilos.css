@@ -1,0 +1,41 @@
+*{
+    margin: 0px auto;
+}
+#wrapper {
+    width: 1200px;
+    background-color: green;
+}
+
+
+#cabecalho, #rodape {
+    width: 1200px;
+    height: 150px;
+    background-color: blue;
+    clear: both;
+}
+
+#carrossel {
+    width: 1200px;
+    height: 150px;
+    background-color: brown;
+    margin-top: 20px;
+}
+
+.box{
+    width: 285px;
+    height: 300px;
+    background-color: burlywood;
+    float: left;
+    margin: 20px 20px 0px 0px;
+}
+
+.semMargem {
+    margin-right: 0px;
+}
+
+#rodape {
+    background-color: magenta;
+    clear: both;
+    margin-top: 20px;
+    float: left;
+}
