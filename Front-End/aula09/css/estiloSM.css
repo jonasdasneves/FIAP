@@ -1,0 +1,19 @@
+/* 
+    SMall devices
+    Small devices (portrait tablets and large phones, 600px and up) 
+    
+*/
+@media (min-width: 600px) and (max-width: 767px) {
+    #wrapper{
+        background-color: #2fac05;
+    }
+    header{
+        background-color: #cb1531;
+    }
+    .xsExibir, .mdExibir, .lgExibir, .xlExibir, .padraoExibir{
+        display: none;
+    }
+    .smExibir{
+        display: block;
+    }
+}

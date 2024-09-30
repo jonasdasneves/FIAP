@@ -1,0 +1,18 @@
+/*  
+    eXtra Small
+    Extra small devices (phones, 600px and down) 
+*/
+@media (max-width: 599px) {
+    #wrapper{
+        background-color: rgb(172, 172, 5);
+    }
+    header{
+        background-color: rgb(148, 106, 178);
+    }
+    .smExibir, .mdExibir, .lgExibir, .xlExibir, .padraoExibir{
+        display: none;
+    }
+    .xsExibir{
+        display: block;
+    }
+}

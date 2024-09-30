@@ -1,0 +1,15 @@
+/* Medium devices (landscape tablets, 768px and up) */
+@media (min-width: 768px) and (max-width:991px) {
+    #wrapper{
+        background-color: #2fac05;
+    }
+    header{
+        background-color: #71ef7b;
+    }
+    .xsExibir, .smExibir, .lgExibir, .xlExibir, .padraoExibir{
+        display: none;
+    }
+    .mdExibir{
+        display: block;
+    }    
+} 
