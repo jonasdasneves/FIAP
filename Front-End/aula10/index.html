@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="wrapper">
+
+
+        <form name="frmCadastro" id="frmCadastro" action="obrigado.html" method="post" enctype="multipart/form-data">
+            <label for="txtNome">Nome:</label>
+            <input type="text" name="txtNome" id="txtNome" maxlength="20" required>
+
+            <br> <!-- Break Row -->
+
+            <label>Cidade:
+                <input type="text"  maxlength="30" id="txtCidade" name="txtCidade">
+            </label>
+
+            <br>
+
+            <label>E-Mail:
+                <input type="email" name="txtEmail" id="txtEmail" maxlength="50" >
+            </label>
+
+            <br>
+
+            <label>Telefone:
+                <input type="tel" name="txtTelefone" id="txtTelefone" maxlength="15">
+            </label>
+
+            <br>
+            <label>Senha:
+                <input type="password" name="txtSenha" id="txtSenha" maxlength="20">
+            </label>
+
+            <br>
+            <label>
+                Data de Nascimento:
+                <input type="date" name="dataNascimento" id="dataNascimento" min="2005-01-31" max="2024-09-23">
+            </label>
+            <br>
+            <label>
+                Data de Nascimento 1:
+                <input type="datetime-local" name="dataNascimento1" id="dataNascimento1" min="2005-01-31" max="2024-09-23">
+            </label>
+            <br>
+            <label>
+                Foto:
+                <input type="file" name="foto" id="foto" accept="image/*">
+            </label>
+            <br>
+            <label>
+                CPF:
+                <input type="text" name="txtCPF" id="txtCPF" maxlength="14">
+            </label>
+            <br>
+            <label>
+                Sexo:
+                <br>
+                <input type="radio" name="sexo" id="Masc" value="M"> Masculino
+                <input type="radio" name="sexo" id="Fem" value="F"> Feminino
+            </label>
+            <br>
+            <label>
+                <input type="checkbox" name="chkTI" id="chkTI" value="TI"> TI
+                <input type="checkbox" name="chkFut" id="chkFutebol" value="Futebol"> Futebol
+                <input type="checkbox" name="chkEng" id="chkEng" value="Engenharia"> Engenharia
+            </label>
+            <br>
+            <label>
+                Estados:
+                <select name="cmbUF">
+                    <option value="SP">São Paulo</option>
+                    <option value="MG">Minas Gerais</option>
+                    <option value="RS">Rio Grande do Sul</option>
+                    <option value="RJ">Rio de Janeiro</option>
+                    <option value="GO">Goiás</option>
+                    <option value="PR">Paraná</option>
+                    <option value="TO">Tocantins</option>
+                    <option value="" selected>Selecione</option>
+                </select>
+            </label>
+            <br>
+            <label>
+                Cor:
+                <input type="color" name="pckCor" id="pckCor">
+            </label>
+            <br>
+            <label>
+                País:
+                <input list="paises">
+                <datalist id="paises">
+                    <option value="Brasil"></option>
+                    <option value="Argentina"></option>
+                    <option value="Japão"></option>
+                    <option value="Alemanha"></option>
+                    <option value="Irlanda"></option>
+                    <option value="Peru"></option>
+                </datalist>
+            </label>
+
+
+
+
+
+
+            <br>
+            <input type="submit">
+            
+
+        </form>
+    </div>
+</body>
+</html>
