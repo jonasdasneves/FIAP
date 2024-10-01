@@ -71,25 +71,62 @@ def selecao_idioma():
 
 #Função onde o usuário escolherá o que precisa
 def intencao(idioma):
-    funcao = int(input('\nVocê está na estação Santo Amaro! Como posso te ajudar hoje? \n 1 - Traçar Rotas \n 2 - Pontos de interesse \n 3 - Tire dúvidas com o Tótis'))
-
     
-    
-    match funcao:
-        case 1:
-            
-            print('\nA qual estacao da linha 9 esmeralda você quer ir?\n')
-            lista = list(estacoes_linha_9.items())
-            destino = 1
-            for estacoes in range(len(lista)-1):
-                print(lista[estacoes])
+    if idioma == 'pt-br':
+        funcao = int(input('\nVocê está na estação Santo Amaro! Como posso te ajudar hoje? \n 1 - Traçar Rotas \n 2 - Pontos de interesse \n 3 - Tire dúvidas com o Tótis \n'))
 
-            destino = int(input(lista[19]))
-            estacao(destino,idioma)
+        match funcao:
+            case 1:
+                
+                print('\nA qual estacao da linha 9 esmeralda você quer ir?\n')
+                lista = list(estacoes_linha_9.items())
+                destino = 1
+                for estacoes in range(len(lista)-1):
+                    print(lista[estacoes])
 
-        case _:
+                destino = int(input(lista[19]))
+                estacao(destino,idioma)
 
-            funcao = int(input('\nVocê está na estação Santo Amaro! Como posso te ajudar hoje? \n 1 - Traçar Rotas \n 2 - Pontos de interesse \n 3 - Converse com o Tótis!\n'))
+            case 2:
+                print('\nO totem perguntará que tipo der serviço o cliente procura (mercados, farmacias, etc) e traçará uma rota para lá\n')
+
+            case 3:
+                print('\nO cliente poderá conversar com o chatbot Tótis, que pode responder perguntas, recomendar pontos turísticos, aceitar sugestões, etc.')
+
+            case 4:
+                intencao(idioma)
+
+            case _:
+
+                funcao = int(input('\nVocê está na estação Santo Amaro! Como posso te ajudar hoje? \n 1 - Traçar Rotas \n 2 - Pontos de interesse \n 3 - Converse com o Tótis!\n 4 - Voltar\n'))
+ 
+    else:  
+        funcao = int(input('\nYou are at Santo Amaro station! How can I help you today? \n 1 - Trace routes \n 2 - Interest points \n 3 - Chat with Tótis!\n'))
+                     
+        match funcao:
+            case 1:
+                
+                print('\nWhich line 9 emerald station are you going to?\n')
+                lista = list(estacoes_linha_9.items())
+                destino = 1
+                for estacoes in range(len(lista)-1):
+                    print(lista[estacoes])
+
+                destino = int(input(lista[19]))
+                estacao(destino,idioma)
+
+            case 2:
+                print('\nThe totem will ask what type of service the customer is looking for (markets, pharmacies, etc.) and plot a route there\n')
+
+            case 3:
+                print('\nThe customer will be able to talk to the Tótis chatbot, which can answer questions, recommend tourist attractions, accept suggestions, etc')
+
+            case 4:
+                intencao(idioma)
+
+            case _:
+
+                funcao = int(input('\nTou are at Santo Amaro station! How can I help you today? \n 1 - Trace routes \n 2 - Interest points \n 3 - Chat with Tótis!\n 4- Comeback\n'))
 
 def estacao(destino, idioma):
 
@@ -99,6 +136,9 @@ def estacao(destino, idioma):
 
         if idioma == 'pt-br':
             print(f'\nPara chegar à estação {estacoes_linha_9[destino]}, você deve pegar o trem no sentido {sentido} e viajar por {trajeto} estações!\n')
+
+        else:
+            print(f'\nIn order to get to the {estacoes_linha_9[destino]} station, you need to get the train going to the {sentido} station and travel for {trajeto} stations!\n')
         
     elif destino > 0 and destino < 14:
         sentido = estacoes_linha_9[1]
@@ -107,24 +147,39 @@ def estacao(destino, idioma):
         if idioma == 'pt-br':
             print(f'\nPara chegar à estação {estacoes_linha_9[destino]}, você deve pegar o trem no sentido {sentido} e viajar por {trajeto} estações!\n')
 
+        else:
+            print(f'\nIn order to get to the {estacoes_linha_9[destino]} station, you need to get the train going to the {sentido} station and travel for {trajeto} stations!\n')
+
 
     elif destino == 14:
-        print('\nVocê já está na estação Santo Amaro!\n')
-        intencao(idioma)
+        if idioma == 'pt-br':
+            print('\nVocê já está na estação Santo Amaro!\n')
+            intencao(idioma)
+        else:
+            print('\nYou are at Santo Amaro station already\n')
 
     else:
-        print('\ndigite um valor válido\n')
-        intencao(idioma)
+        if idioma == 'pt-br':
+            print('\ndigite um valor válido\n')
+            intencao(idioma)
+        else:
+            print('\nTipe a valid valuey\n')
 
-def pontos_interesse(idioma):
-    interesse = int(input('\nQue tipo de serviço você procura?\n'))
+def termino(idioma):
+    if idioma == 'pt-br':
+        print('\nObrigado por usar o Totem da Via mobilidade! Encerrando atendimento\n')
 
+    else:
+        print('\nThank you for using the Totem Via Mobilidade! finalizing service')
 
-#Inicia perguntando o idioma a ser utilizado
-idioma = selecao_idioma()
+while True:
+    #Inicia perguntando o idioma a ser utilizado
+    idioma = selecao_idioma()
 
-#Chama a função intenção
-intencao(idioma)
+    #Chama a função intenção
+    intencao(idioma)
+
+    termino(idioma)
 
 
 
