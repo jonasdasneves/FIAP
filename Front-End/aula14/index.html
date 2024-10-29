@@ -1,20 +1,82 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <script src="js/script.js"></script>
+    <style>
+        .modal{
+            display: none;
+            position: fixed;
+            top: 0px;
+            left: 0px;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+        .modal-content{
+            background-color: white;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 00 4px 8px rgba(0,0,0,0.5);
+            border-radius: 8px;
+        }
+        .modal.open{
+            display: flex;
+
+        }
+    </style>
+    
 </head>
+
 <body>
-    <form method="post" onsubmit=validar()>
-        <label for="user">Usuário</label><input type="text" name="user" id="user">
-        <div id="erroUser"></div>
-        <br>
-        <label for="pw">Senha</label><input type="password" name="pw" id="pw">
-        <div id="erroSenha"></div>
-        <input type="button" value="enviar" onclick="validar()">
-        <div id="msgErro"></div>
-    </form>
+    <div id="mainContent">
+        <form>
+            <label for="txtUsuario">Usuario</label>
+            <input type="text" name="txtUsuario" id="txtUsuario">
+            <div id="erroUsuario"></div>
+            <br>
+            <label for="txtSenha">Senha</label>
+            <input type="password" name="txtSenha" id="txtSenha">
+            <div id="erroSenha"></div>
+            <br>
+            <input type="checkbox" id="chkManerLogado"><label for="chkManerLogado">Manter Logado</label>
+            <br>
+            <input type="button" onclick="validar()" value="Login">
+            <div id="erro"></div>
+        </form>
+    </div>
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <p>Página restrita, efetue login</p>
+            <button id="closeModal"> fechar modal</button>
+        </div>
+    </div>
+    <script>
+        const msgErro = localStorage.getItem('msgErro');
+        const erro = document.getElementById('erro');
+        const mainContent = document.getElementById('mainContent');
+        const modal = document.getElementById('modal');
+        const closeModal = document.getElementById('closeModal');
+ 
+        if(msgErro == '0'){
+            erro.innerText = "";
+        }
+        if(msgErro == '1'){
+            mainContent.setAttribute('inert', 'true');
+            modal.classList.add('open');
+        }
+
+        closeModal.addEventListener('click',()=>{
+            modal.classList.remove('open');
+            mainContent.removeAttribute('inert');
+        })
+    </script>
 </body>
+
 </html>
