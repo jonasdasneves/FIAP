@@ -1,5 +1,3 @@
-#Menu para totem - Dá uma explicação rápida do funcionamento para o usuário
-print('CCR Totem\n Para navegar, digite valores correspondentes à sua resposta \n To navigate, tipe values according to your answer\n')
     
 #Definição de dicionários para expor opções:
 
@@ -28,26 +26,6 @@ estacoes_linha_9 = {
 
 }
 
-# dicionários contendo alguns pontos de interesse gerais em português 
-servicos = {
-    1 : 'Atendimento Médico',
-    2 : 'restaurante',
-    3 : 'farmácia',
-    4 : 'Mercado',
-    5 : 'Shopping',
-    6 : 'Me recomende um ponto turístico'
-}
-
-# dicionários contendo alguns pontos de interesse gerais em inglês 
-services = {
-    1 : 'Atendimento Médico',
-    2 : 'restaurante',
-    3 : 'farmácia',
-    4 : 'Market',
-    5 : 'Mall',
-    6 : 'Recommend me a touristical point'
-}
-
 #Definição de funções:
 
 #Definição de idioma
@@ -73,7 +51,7 @@ def selecao_idioma():
 def intencao(idioma):
     
     if idioma == 'pt-br':
-        funcao = int(input('\nVocê está na estação Santo Amaro! Como posso te ajudar hoje? \n 1 - Traçar Rotas \n 2 - Pontos de interesse \n 3 - Tire dúvidas com o Tótis \n'))
+        funcao = int(input('\nVocê está na estação Santo Amaro! Como posso te ajudar hoje? \n 1 - Traçar Rotas \n 2 - Pontos de interesse \n 3 - Tire dúvidas com o Tótis \n 4 - Encerrar programa'))
 
         match funcao:
             case 1:
@@ -94,14 +72,13 @@ def intencao(idioma):
                 print('\nO cliente poderá conversar com o chatbot Tótis, que pode responder perguntas, recomendar pontos turísticos, aceitar sugestões, etc.')
 
             case 4:
-                intencao(idioma)
+                termino_e_avaliacao(idioma)
 
             case _:
 
-                funcao = int(input('\nVocê está na estação Santo Amaro! Como posso te ajudar hoje? \n 1 - Traçar Rotas \n 2 - Pontos de interesse \n 3 - Converse com o Tótis!\n 4 - Voltar\n'))
- 
+                intencao(idioma)
     else:  
-        funcao = int(input('\nYou are at Santo Amaro station! How can I help you today? \n 1 - Trace routes \n 2 - Interest points \n 3 - Chat with Tótis!\n'))
+        funcao = int(input('\nYou are at Santo Amaro station! How can I help you today? \n 1 - Trace routes \n 2 - Interest points \n 3 - Chat with Tótis!\n 4 - End program\n'))
                      
         match funcao:
             case 1:
@@ -116,17 +93,17 @@ def intencao(idioma):
                 estacao(destino,idioma)
 
             case 2:
-                print('\nThe totem will ask what type of service the customer is looking for (markets, pharmacies, etc.) and plot a route there\n')
+                print('\nThe totem will ask what type of service the customer is looking for (markets, pharmacies, etc.) and trace a route there\n')
 
             case 3:
                 print('\nThe customer will be able to talk to the Tótis chatbot, which can answer questions, recommend tourist attractions, accept suggestions, etc')
 
             case 4:
-                intencao(idioma)
+                termino_e_avaliacao(idioma)
 
             case _:
 
-                funcao = int(input('\nTou are at Santo Amaro station! How can I help you today? \n 1 - Trace routes \n 2 - Interest points \n 3 - Chat with Tótis!\n 4- Comeback\n'))
+                intencao(idioma)
 
 def estacao(destino, idioma):
 
@@ -165,21 +142,66 @@ def estacao(destino, idioma):
         else:
             print('\nTipe a valid valuey\n')
 
-def termino(idioma):
+def termino_e_avaliacao(idioma):
     if idioma == 'pt-br':
+        menu = int(input("Gostaria de deixar uma avaliação do serviço?\n0-Não\n1-Sim"))
+        nota = 0
+        match menu:
+            case 0:
+                pass
+            case 1:
+                while nota < 1 or nota > 5:
+                    nota = int(input("Digite sua nota de 1 a 5 estrelas!"))
+                    if nota > 0 and nota < 6:
+                        print("Muito obrigado pela sua avaliação! Sua opinião é importante para nós!")
+                    else:
+                        print("Digite uma nota válida")
+            case _:
+                print("Digite uma opção válida")
+                termino_e_avaliacao()
+
         print('\nObrigado por usar o Totem da Via mobilidade! Encerrando atendimento\n')
+        return nota
 
     else:
-        print('\nThank you for using the Totem Via Mobilidade! finalizing service')
+        menu = int(input("Would you like to rate our service??\n0-No\n1-Yes"))
+        nota = 0
+        
+        match menu:
+            case 0:
+                pass
+            case 1:
+                while nota < 1 or nota > 5:
+                    nota = int(input("Type your rating from 1 to 5 stars!"))
+                    if nota > 0 and nota < 6:
+                        print("Thank you vert much for your rating! Your opinion is very important for us!")
+                    else:
+                        print("Type a valid rating")
+            case _:
+                print("Digite uma opção válida")
+                termino_e_avaliacao()
+        print('\nThank you for using the Totem Via Mobilidade! finalizing service\n')
+        return nota
 
-while True:
-    #Inicia perguntando o idioma a ser utilizado
-    idioma = selecao_idioma()
+def main():
+    #Função principal com loop
+    while True:
+        #Menu para totem - Dá uma explicação rápida do funcionamento para o usuário
+        print('CCR Totem\n Para navegar, digite valores correspondentes à sua resposta \n To navigate, tipe values according to your answer\n')
 
-    #Chama a função intenção
-    intencao(idioma)
+        #Inicia perguntando o idioma a ser utilizado
+        idioma = selecao_idioma()
 
-    termino(idioma)
+        #Chama a função intenção
+        intencao(idioma)
+
+#Inicia função principal e loop
+main()
+
+
+
+
+    
 
 
 
